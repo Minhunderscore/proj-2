@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+  labels:
+    app: python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app 
+        image: jup1t3r3rd/proj-2:v5
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            memory: "15Mi"
+            cpu: "1.5m"
+          requests:
+            memory: "10Mi"
+            cpu: "1m"
